@@ -1,0 +1,45 @@
+{
+  "name": "stream-overlay",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "file-saver": "^2.0.5",
+    "jquery": "^3.6.0",
+    "lcu-connector": "^2.1.3",
+    "loader.js": "^4.7.0",
+    "lol-esports-spectate": "^2.0.2-beta.22",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.1",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.7",
+    "popper.js": "^1.16.1",
+    "reconnecting-websocket": "^4.4.0"
+  },
+  "scripts": {
+    "start": "node node.server.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
