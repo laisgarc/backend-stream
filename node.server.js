@@ -5,7 +5,14 @@ var express = require('express');
 var app = express();
 var multer = require('multer')
 var cors = require('cors');
-app.use(cors())
+app.use((req, res, next) => {
+	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+    res.header("Access-Control-Allow-Origin", "*");
+	//Quais são os métodos que a conexão pode realizar na API
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
 
 var dataToSendFile = require('./dataToSend')
 var dataToSend = dataToSendFile.dataToSend
@@ -215,7 +222,7 @@ connector.start();
 
 var storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, 'public/TeamImages')
+		cb(null, '../overlays/public/TeamImages')
 	},
 	filename: function (req, file, cb) {
 		cb(null, file.originalname)
@@ -258,18 +265,17 @@ app.post('/uploadImage', function (req, res) {
 
 app.post('/saveConfig', jsonParser, function (req, res) {
 	console.log(req.body)
-	fs.writeFile('src/Pages/GameState.json', JSON.stringify(req.body), function (err, data) {
+	fs.writeFile('../overlays/src/Pages/GameState.json', JSON.stringify(req.body), function (err, data) {
 		if (err) {
 			return res.status(500).json(err)
 		}
-		console.log(data)
 		return res.status(200).send("OK")
 	})
 });
 
 app.post('/saveTeam', jsonParser, function (req, res) {
 	console.log(req.body)
-	fs.writeFile(`public/Teams/${req.body.teamName}.json`, JSON.stringify(req.body.info), function (err, data) {
+	fs.writeFile(`../overlays/public/Teams/${req.body.teamName}.json`, JSON.stringify(req.body.info), function (err, data) {
 		if (err) {
 			return res.status(500).json(err)
 		}
@@ -281,11 +287,12 @@ app.post('/saveTeam', jsonParser, function (req, res) {
 app.get('/teams', function (req, res) {
 	let teams = []
 
-	fs.readdir('./public/Teams', (err, files) => {
-		files.forEach(file => {
+	fs.readdir('../overlays/public/Teams', (err, files) => {
+		if(files){
+    files.forEach(file => {
 			teams.push(file);
 		})
-
+}
 		return res.status(200).send(teams)
 	})
 });
@@ -293,7 +300,7 @@ app.get('/teams', function (req, res) {
 app.get('/images', function (req, res) {
 	let images = []
 
-	fs.readdir('./public/TeamImages', (err, files) => {
+	fs.readdir('../overlays/public/TeamImages', (err, files) => {
     if(files) {
 		files.forEach(file => {
 			images.push(file);

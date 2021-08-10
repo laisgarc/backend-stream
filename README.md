@@ -20,6 +20,17 @@ Você pode fazer isso de diversas maneiras, mas uma fácil é usando o [Mockoon]
 ###### Próximos passos
 Em `node.server.js` seter a variável 'useLCU' como `false`. Isso fará com que o servidor busque as informações na REST API, ao invés de esperar um evento do Client.
 
+### Configurando com o Front-End
+Para que o servidor possa rodar corretamente com o front-end, o diretório deve seguir esse formato:
+```
+projeto
+└───back-end
+│   │ este repositório  
+│
+└───overlays
+    │   repositório do front-end
+```
+
 
 ## To-Do
 - [ ] Corrigir bug do login no Client
