@@ -15,10 +15,8 @@ O servidor estará rodando na porta 30061.
 ### Teste com JSON
 
 Criei um JSON com as entradas simulando um matchup. Caso queira testar o overlay de matchup, é preciso:
-###### Criar uma REST API com os dados
-Você pode fazer isso de diversas maneiras, mas uma fácil é usando o [Mockoon](https://mockoon.com/), abra a REST API em `3001`, e crie a rota `/data`. Então, selecionando a operação `GET`, copie e cole o conteúdo do arquivo `testePicks.json`. Caso queira editar para que o servidor busque esses dados em outra URL, troque eles na função `createData()` dentro do arquivo `node.server.js`
-###### Próximos passos
-Em `node.server.js` seter a variável 'useLCU' como `false`. Isso fará com que o servidor busque as informações na REST API, ao invés de esperar um evento do Client.
+
+Em `node.server.js` seter a variável 'useLCU' como `false`. Isso fará com que o servidor busque as informações na JSON `testePicks.json`, ao invés de esperar um evento do Client.
 
 ### Configurando com o Front-End
 Para que o servidor possa rodar corretamente com o front-end, o diretório deve seguir esse formato:

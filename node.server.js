@@ -145,12 +145,7 @@ function processData(data) {
 }
 
 function createData() {
-  fetch('http://localhost:3001/data',{
-    method: 'get',
-    headers: { 'Content-Type': 'application/json' }
-  }).then(res => res.json())
-  .then(json => {
-    serverRes = json
+  var serverRes = require('./testePicks.json')
     let idx = 0
     var timer = setInterval(() => {
       if(finished){
@@ -166,7 +161,6 @@ function createData() {
     if(finished){
       return
     }
-  })
   if(finished){
     return
   }
