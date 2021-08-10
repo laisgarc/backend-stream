@@ -310,6 +310,6 @@ app.get('/images', function (req, res) {
 	})
 });
 
-app.listen(30061, function () {
+app.listen(30061 || process.env.PORT, function () {
 	console.log('App running on port 30061');
 });
