@@ -3,6 +3,8 @@
 Back-End de um projeto para criação de overlays para LoL. 
 É um servidor node, que usa o [LCU Connector](https://github.com/sousa-andre/ws4lcu-connector) para buscar as informações via websocket no Client do LoL.
 
+[Front-End do projeto](https://github.com/laisgarc/frontend-stream)
+
 ## Como usar
 
 ⚠️ **Antes de iniciar o servidor, certifique-se de que o Client do LoL já está aberto** ⚠️
